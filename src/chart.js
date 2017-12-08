@@ -12,9 +12,17 @@ class Chart extends Component {
 
       <div className="chart">
         <Chartheader />
+
         {data.data.map(cur => {
-          return <div className="currName">{cur.name}</div>
+          return (
+              <div>
+                  <div className="currName">{cur.name}</div>
+                  <div className="currPrice">{cur.price_usd}</div>
+                  <div className="currCap">{cur.market_cap_usd}</div>
+                  <div className="currChange">{cur.percent_change_24h}</div>
+                </div>)
         })}
+
       </div>
     );
   }
