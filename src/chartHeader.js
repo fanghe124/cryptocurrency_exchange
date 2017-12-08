@@ -6,6 +6,7 @@ class Chartheader extends Component {
   render() {
     return (
       <div className="chartHeader">
+          <div className="column0">Rank</div>
           <div className="column1">Currency</div>
           <div className="column2">Price</div>
           <div className="column3">Market Cap</div>
