@@ -8,11 +8,11 @@ class Chartheader extends Component {
     const {rankClick, priceClick} = this.props;
     return (
       <div className="chartHeader">
-          <div className="column0" onClick={rankClick}>Rank</div>
-          <div className="column1">Currency</div>
-          <div className="column2" onClick={priceClick}>Price</div>
-          <div className="column3">Market Cap</div>
-          <div className="column4">24 Hour Change</div>
+          <div className="column0" onClick={rankClick}><p className="headText">Rank</p></div>
+          <div className="column1"><p className="headText">Currency</p></div>
+          <div className="column2" onClick={priceClick}><p className="headText">Price</p></div>
+          <div className="column3"><p className="headText">Market Cap</p></div>
+          <div className="column4"><p className="headText">24 Hour Change</p></div>
       </div>
     )
   }

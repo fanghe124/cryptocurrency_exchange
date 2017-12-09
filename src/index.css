@@ -76,6 +76,14 @@
   font-size: 15px;
 }
 
+.headText {
+  width: 50%;
+  padding: auto;
+  margin: auto;
+}
+.headText:hover {
+  cursor: pointer;
+}
 .currName {
 
   float: left;
