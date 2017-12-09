@@ -19,11 +19,19 @@ class App extends Component {
         this.setState({data});
       });
   }
+
+  rankClick = () => {
+    let data = this.state.data.reverse();
+    this.setState({
+      data
+    });
+  }
+
   render() {
     return (
       <div className="App">
         <Header />
-        <Chart data={this.state}/>
+        <Chart data={this.state} rankClick={this.rankClick}/>
       </div>
     );
   }

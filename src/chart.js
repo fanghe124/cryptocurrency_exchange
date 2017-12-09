@@ -2,16 +2,19 @@ import React, { Component } from 'react';
 import './index.css';
 import Chartheader from './chartHeader';
 
+
+/* render and handle chart listings */
 class Chart extends Component {
 
 
   render() {
-    const {data} = this.props;
+    const {data, rankClick} = this.props;
+
     console.log(data);
     return (
 
       <div className="chart">
-        <Chartheader />
+      <Chartheader chartData={rankClick}/>
 
         {data.data.map(cur => {
           return (
