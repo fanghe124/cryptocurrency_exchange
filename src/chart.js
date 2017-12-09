@@ -16,8 +16,8 @@ class Chart extends Component {
               <div>
                   <div className="currRank">{cur.rank}</div>
                   <div className="currName">{cur.name}({cur.symbol})</div>
-                  <div className="currPrice">{cur.price_usd}</div>
-                  <div className="currCap">{cur.market_cap_usd}</div>
+                  <div className="currPrice">${cur.price_usd}</div>
+                  <div className="currCap">${cur.market_cap_usd}</div>
                   <div className="currChange">{cur.percent_change_24h}%</div>
               </div>)
         })}
