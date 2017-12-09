@@ -6,11 +6,11 @@ import Chartheader from './chartHeader';
 /* render and handle chart listings */
 class Chart extends Component {
   render() {
-    const {data, rankClick, priceClick, changeClick} = this.props;
+    const {data, rankClick, priceClick, changeClick, nameClick} = this.props;
 
     return (
       <div className="chart">
-      <Chartheader rankClick={rankClick} priceClick={priceClick} changeClick={changeClick}/>
+      <Chartheader rankClick={rankClick} priceClick={priceClick} changeClick={changeClick} nameClick={nameClick}/>
         {data.data.map(cur => {
           return (
               <div>

@@ -9,7 +9,8 @@ class App extends Component {
   state = {
     data: [],
     priceStatus: 'a',
-    changeStatus: 'a'
+    changeStatus: 'a',
+    nameStatus: 'a'
   }
 
   componentDidMount = () => {
@@ -40,7 +41,7 @@ class App extends Component {
     })
     this.setState({data});
   }
-
+  /* rank listings based on 24 change */
   changeClick = () => {
     let data = this.state.data.sort((a,b) => {
             if (this.state.changeStatus === 'a') {
@@ -54,12 +55,37 @@ class App extends Component {
     })
     this.setState({data});
   }
+  /* implement feature to sort currency name by alphabetical order/reverse */
+    nameClick = () => {
+      let data = this.state.data.sort((a,b) => {
+          const nameA = a.name.toLowerCase(), nameB = b.name.toLowerCase();
+
+            if (this.state.nameStatus === 'a') {
+              this.setState({nameStatus:'b'});
+              if (nameA < nameB)
+                return -1;
+              if (nameA > nameB)
+                return 1;
+            }
+            else {
+                this.setState({nameStatus:'a'});
+                if (nameA > nameB)
+                  return -1;
+                if (nameA < nameB)
+                  return 1;
+            }
+          return 0;
+      });
+      this.setState({data});
+    }
+
 
   render() {
     return (
       <div className="App">
         <Header />
-        <Chart data={this.state} rankClick={this.rankClick} priceClick={this.priceClick} changeClick={this.changeClick}/>
+        <Chart data={this.state} rankClick={this.rankClick}
+          priceClick={this.priceClick} changeClick={this.changeClick} nameClick={this.nameClick}/>
       </div>
     );
   }
