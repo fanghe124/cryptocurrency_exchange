@@ -8,7 +8,8 @@ class App extends Component {
 
   state = {
     data: [],
-    priceStatus: 'a'
+    priceStatus: 'a',
+    changeStatus: 'a'
   }
 
   componentDidMount = () => {
@@ -32,9 +33,23 @@ class App extends Component {
               this.setState({priceStatus: 'b'});
               return a.price_usd - b.price_usd;
             }
-            else if (this.state.priceStatus === 'b') {
+            else {
               this.setState({priceStatus: 'a'});
               return b.price_usd - a.price_usd;
+            }
+    })
+    this.setState({data});
+  }
+
+  changeClick = () => {
+    let data = this.state.data.sort((a,b) => {
+            if (this.state.changeStatus === 'a') {
+              this.setState({changeStatus: 'b'});
+              return a.percent_change_24h - b.percent_change_24h;
+            }
+            else {
+              this.setState({changeStatus: 'a'});
+              return b.percent_change_24h - a.percent_change_24h;
             }
     })
     this.setState({data});
@@ -44,7 +59,7 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
-        <Chart data={this.state} rankClick={this.rankClick} priceClick={this.priceClick}/>
+        <Chart data={this.state} rankClick={this.rankClick} priceClick={this.priceClick} changeClick={this.changeClick}/>
       </div>
     );
   }
