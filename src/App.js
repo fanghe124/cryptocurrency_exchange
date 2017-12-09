@@ -2,15 +2,14 @@ import React, { Component } from 'react';
 import Header from './header';
 import Chart from './chart';
 import axios from 'axios';
-
 import './index.css';
 
 class App extends Component {
 
   state = {
-    data: []
+    data: [],
+    priceStatus: 'a'
   }
-
 
   componentDidMount = () => {
     axios.get('https://api.coinmarketcap.com/v1/ticker/')
@@ -19,19 +18,33 @@ class App extends Component {
         this.setState({data});
       });
   }
-
+  /* reverse order of listings by rank */
   rankClick = () => {
     let data = this.state.data.reverse();
     this.setState({
       data
     });
   }
+  /* rank price listings from low-high or high-low */
+  priceClick = () => {
+    let data = this.state.data.sort((a,b) => {
+            if (this.state.priceStatus === 'a') {
+              this.setState({priceStatus: 'b'});
+              return a.price_usd - b.price_usd;
+            }
+            else if (this.state.priceStatus === 'b') {
+              this.setState({priceStatus: 'a'});
+              return b.price_usd - a.price_usd;
+            }
+    })
+    this.setState({data});
+  }
 
   render() {
     return (
       <div className="App">
         <Header />
-        <Chart data={this.state} rankClick={this.rankClick}/>
+        <Chart data={this.state} rankClick={this.rankClick} priceClick={this.priceClick}/>
       </div>
     );
   }
