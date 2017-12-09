@@ -81,9 +81,11 @@
   padding: auto;
   margin: auto;
 }
+
 .headText:hover {
   cursor: pointer;
 }
+
 .currName {
 
   float: left;
@@ -129,7 +131,19 @@
   height: 30px;
   border-bottom: groove;
   border-width: 1px;
+  color: green;
+}
 
+.currChange2 {
+  color: red;
+  float: left;
+  width: 20%;
+  text-align: center;
+  font-family: monospace;
+  font-weight: bold;
+  height: 30px;
+  border-bottom: groove;
+  border-width: 1px;
 }
 
 .currRank {
@@ -141,4 +155,11 @@
   height: 30px;
   border-bottom: groove;
   border-width: 1px;
+}
+
+.currMenu {
+  width: 120px;
+  float: right;
+  margin: auto;
+  margin-right: 10%;
 }
