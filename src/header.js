@@ -4,9 +4,11 @@ import CurrToggle from './currToggle';
 
 class Header extends Component {
   render() {
+    const {select, changeOption} = this.props;
+
     return(
       <div className='head_row'>
-        <CurrToggle  />
+        <CurrToggle  select={select} changeOption={changeOption}/>
         CryptXchange
       </div>
     );

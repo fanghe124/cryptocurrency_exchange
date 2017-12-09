@@ -10,7 +10,8 @@ class App extends Component {
     data: [],
     priceStatus: 'a',
     changeStatus: 'a',
-    nameStatus: 'a'
+    nameStatus: 'a',
+    selectedOption: 'USD'
   }
 
   componentDidMount = () => {
@@ -79,11 +80,24 @@ class App extends Component {
       this.setState({data});
     }
 
+    changeOption = (data) => {
+      if (data === 'USD') {
+        this.setState({
+          selectedOption: 'BTC'
+        });
+      }
+      else {
+        this.setState({
+          selectedOption: 'USD'
+        });
+      }
 
+    }
   render() {
+    console.log(this.state.selectedOption);
     return (
       <div className="App">
-        <Header />
+        <Header select={this.state.selectedOption} changeOption={this.changeOption}/>
         <Chart data={this.state} rankClick={this.rankClick}
           priceClick={this.priceClick} changeClick={this.changeClick} nameClick={this.nameClick}/>
       </div>
