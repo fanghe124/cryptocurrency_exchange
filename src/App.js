@@ -80,26 +80,18 @@ class App extends Component {
       this.setState({data});
     }
 
-    changeOption = (data) => {
-      if (data === 'USD') {
-        this.setState({
-          selectedOption: 'BTC'
-        });
-      }
-      else {
-        this.setState({
-          selectedOption: 'USD'
-        });
-      }
+    changeOption = (selectedOption) => {
+      this.setState({selectedOption})
 
     }
   render() {
-    console.log(this.state.selectedOption);
+    console.log(this.state.selectedOption.value);
     return (
       <div className="App">
         <Header select={this.state.selectedOption} changeOption={this.changeOption}/>
         <Chart data={this.state} rankClick={this.rankClick}
-          priceClick={this.priceClick} changeClick={this.changeClick} nameClick={this.nameClick}/>
+          priceClick={this.priceClick} changeClick={this.changeClick} nameClick={this.nameClick}
+          selectedOption={this.state.selectedOption.value}/>
       </div>
     );
   }

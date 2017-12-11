@@ -6,10 +6,8 @@ import Chartheader from './chartHeader';
 /* render and handle chart listings */
 class Chart extends Component {
 
-
   render() {
-
-    const {data, rankClick, priceClick, changeClick, nameClick} = this.props;
+    const {data, rankClick, priceClick, changeClick, nameClick, selectedOption} = this.props;
 
     return (
       <div className="chart">
@@ -20,7 +18,12 @@ class Chart extends Component {
               <div>
                   <div className="currRank">{cur.rank}</div>
                   <div className="currName">{cur.name}({cur.symbol})</div>
-                  <div className="currPrice">${cur.price_usd}</div>
+                  {
+                    selectedOption === 'BTC' ?
+                    <div className="currPrice">${cur.price_btc}</div> :
+                    <div className="currPrice">${cur.price_usd}</div>
+                  }
+
                   <div className="currCap">${cur.market_cap_usd}</div>
                   {
                     cur.percent_change_24h >= 0 ?
