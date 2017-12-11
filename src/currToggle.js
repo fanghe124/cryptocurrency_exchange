@@ -17,6 +17,7 @@ class CurrToggle extends Component {
           { value: 'USD', label: 'USD' },
           { value: 'BTC', label: 'BTC' },
         ]}
+        clearable={false}
       />
     );
   }
