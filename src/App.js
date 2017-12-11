@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Header from './header';
 import Chart from './chart';
+import Search from './search';
 import axios from 'axios';
 import './index.css';
 
@@ -11,7 +12,8 @@ class App extends Component {
     priceStatus: 'a',
     changeStatus: 'a',
     nameStatus: 'a',
-    selectedOption: 'USD'
+    selectedOption: 'USD',
+    searchTerm: ''
   }
 
   componentDidMount = () => {
@@ -84,11 +86,16 @@ class App extends Component {
       this.setState({selectedOption})
 
     }
+
+    searchChange = (searchTerm) => {
+      this.setState({searchTerm});
+    }
   render() {
     console.log(this.state.selectedOption.value);
     return (
       <div className="App">
         <Header select={this.state.selectedOption} changeOption={this.changeOption}/>
+        <Search searchTerm={this.state.searchTerm} searchChange={this.searchChange}/>
         <Chart data={this.state} rankClick={this.rankClick}
           priceClick={this.priceClick} changeClick={this.changeClick} nameClick={this.nameClick}
           selectedOption={this.state.selectedOption.value}/>

@@ -8,12 +8,14 @@ class Chart extends Component {
 
   render() {
     const {data, rankClick, priceClick, changeClick, nameClick, selectedOption} = this.props;
-
+    const filteredData = data.data.filter(results =>
+      results.name.toLowerCase().includes(data.searchTerm.toLowerCase())
+    );
     return (
       <div className="chart">
       <Chartheader rankClick={rankClick} priceClick={priceClick}
         changeClick={changeClick} nameClick={nameClick}/>
-        {data.data.map(cur => {
+        {filteredData.map(cur => {
           return (
               <div>
                   <div className="currRank">{cur.rank}</div>
